@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using 
 
 public class RayTrace : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class RayTrace : MonoBehaviour
     RaycastHit hit;
     public void SendRay(Camera cameraMain, List<PixelInfo> ratioPixelList, ref List<Vector3> vectorList)
     {
+        int index = 0;
         foreach (PixelInfo pixelPair in ratioPixelList)
         {
             ray = cameraMain.ScreenPointToRay(new Vector3(pixelPair.x, pixelPair.y, 0));
@@ -20,17 +22,24 @@ public class RayTrace : MonoBehaviour
                 {
                     //sphereColour.transform.position = ray.GetPoint(Hit3D.distance);               
                     //transform.position.Set(Hit3D.point.x, 0.0F, Hit3D.point.z);
-                    Vector3 vector = new Vector3(hit.point.x, 0.0F, hit.point.z);
+                    Vector3 vector = new Vector3(RoundFloat(hit.point.x), 0.0F, RoundFloat(hit.point.z));
                     //sphere.transform.position = vector;
-
-                    vectorList.Add(vector);
-                    Debug.Log(vector.x);
+                    if (!vectorList.Contains(vector))
+                    {
+                        vectorList.Add(vector);
+                        Debug.Log(vector.x);
+                    }
                 }
             }
+            Debug.Log(index);
+            index++;
         }
         //Ray ray = Camera.ScreenPointToRay(new Vector3(ratioPixelList[index].x, ratioPixelList[index].y, 0));
         
     }
-
+    public float RoundFloat(float f)
+    {
+        return Mathf.Round(f * 10.0f) * 0.1f;
+    }
 
 }

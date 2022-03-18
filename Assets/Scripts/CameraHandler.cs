@@ -44,15 +44,15 @@ public class CameraHandler : MonoBehaviour
             x = camera.pixelWidth,
             y = camera.pixelHeight
         };
-        string file = System.IO.File.ReadAllText(@"C:\FinalYearProject\Python\Output\json\coords0.json");
+        string file = System.IO.File.ReadAllText(@"C:\FinalYearProject\Python\TwitchToddler-Python\Python\Output\json\coords0.json");
         Debug.Log(file);
 
         List<PixelInfo> pixelList = JsonConvert.DeserializeObject<List<PixelInfo>>(file);
         PixelInfo imageRes = pixelList[0];
         pixelList.RemoveAt(0);
 
-        double ratioX = cameraRes.x / imageRes.x;
-        double ratioY = cameraRes.y / imageRes.y;
+        float ratioX = cameraRes.x / imageRes.x;
+        float ratioY = cameraRes.y / imageRes.y;
         ratioPixelList = new List<PixelInfo>();
         int index = 0;
 

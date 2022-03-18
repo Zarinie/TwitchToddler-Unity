@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.2020twitchtest.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\FinalYearProject\\Unity\\Projects\\2020TwitchTest\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "C:\\FinalYearProject\\Unity\\Projects\\TwitchToddler-Unity\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "2020TwitchTest [Testing]"

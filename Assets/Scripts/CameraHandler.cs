@@ -39,13 +39,9 @@ public class CameraHandler : MonoBehaviour
 
     public List<PixelInfo> SetPixelInfo(Camera camera)
     {
-        PixelInfo cameraRes = new PixelInfo
-        {
-            x = camera.pixelWidth,
-            y = camera.pixelHeight
-        };
+        PixelInfo cameraRes = new PixelInfo(camera.pixelWidth,camera.pixelHeight);
         string file = System.IO.File.ReadAllText(@"C:\FinalYearProject\Python\TwitchToddler-Python\Python\Output\json\coords0.json");
-        Debug.Log(file);
+        //Debug.Log(file);
 
         List<PixelInfo> pixelList = JsonConvert.DeserializeObject<List<PixelInfo>>(file);
         PixelInfo imageRes = pixelList[0];
@@ -59,10 +55,8 @@ public class CameraHandler : MonoBehaviour
         foreach (PixelInfo pixelPair in pixelList)
         {
             PixelInfo temp = new PixelInfo
-            {
-                x = (int)(pixelPair.x * ratioX),
-                y = (int)(pixelPair.y * ratioY)
-            };
+                ((int)(pixelPair.x * ratioX), (int)(pixelPair.y * ratioY));
+
             ratioPixelList.Add(temp);
             index++;
         }

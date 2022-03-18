@@ -50,7 +50,11 @@ public class Main : MonoBehaviour
                 ratioedPixelList = cameraHandler.SetPixelInfo(camera);
                 rayTrace.SendRay(camera, ratioedPixelList, ref vectorList);
                 if (vectorList.Count > 0)
+                {
                     meshHandler.CreateShape(vectorList);
+                    
+                }
+                    
 
             }, null, startTime, periodTime);
         //}
@@ -61,6 +65,7 @@ public class Main : MonoBehaviour
     {
         //getScreenshots.RequestScreenshots(1);
         ratioedPixelList = cameraHandler.SetPixelInfo(camera);
+        //ratioedPixelList = new List<PixelInfo>{new PixelInfo(0, 0), new PixelInfo(0, 1440), new PixelInfo(2560, 1440), new PixelInfo(2560, 0)};
         rayTrace.SendRay(camera, ratioedPixelList, ref vectorList);
         //vectorList = new List<Vector3>();
         
@@ -68,6 +73,7 @@ public class Main : MonoBehaviour
         {
             meshHandler.CreateShape(vectorList);
             meshFound = true;
+            Debug.Log(vectorList);
         }   
     }
 

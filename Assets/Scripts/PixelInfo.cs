@@ -13,23 +13,10 @@ public class PixelInfo
     public int x { get; set; }
     public int y { get; set; }
 
-    //public static void CreateFromJSON(string jsonString)
-    //{
-
-        //var player = JsonConvert.DeserializeObject<List<PixelInfo>>(jsonString);
-
-
-
-
-        //List
-        //using JsonDocument doc = JsonDocument.Parse(jsonString);
-        //JsonElement root = doc.RootElement;
-        //for (int i = 0; i < root.GetArrayLength(); i++)
-        //{
-        //PixelInfo temp = new PixelInfo();
-        //temp.x = Int32. (root[i].GetProperty("x"));
-        //} 
-        //return JsonUtility.FromJson<PixelInfo>(jsonString);
-    //}
+    public PixelInfo(int xCoord, int yCoord)
+    {
+        x = xCoord;
+        y = yCoord;
+    }
 
 }

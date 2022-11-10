@@ -30,6 +30,8 @@ public class MeshHandler : MonoBehaviour
         MyVector2 temp = new MyVector2();
         vertices = new Vector3[vectors.Count];
         int setupIndex = 0;
+
+        // The shape generation package requires its own objects for vectors
         foreach (Vector3 vector in vectors)
         {
             temp.x = vector.x;
@@ -39,20 +41,23 @@ public class MeshHandler : MonoBehaviour
             points.Add(temp);
             setupIndex++;
         }
+        // Call shape generation tool
         triangles = _EarClipping.Triangulate(points);
+
+        // Set up mesh
         mesh = new Mesh();
         GameObject meshGenerator = GameObject.Find("/Mesh");
         meshFilter = meshGenerator.GetComponent(typeof(MeshFilter)) as MeshFilter;
-        //meshGenerator = cameraObject.GetComponent(typeof(Camera)) as Camera;
         meshGenerator.GetComponent<MeshFilter>().mesh = mesh;
-        //GetComponent<MeshFilter>().mesh = mesh;
     }
 
+    // The triangles need to be arranged from the output from shape generation tool before the mesh can handle them
     public void buildTriangles()
     {
         arrTriangles = new int[triangles.Count * 3];
         int index = 0;
         int[] temp = new int[3];
+        // For each triangle three points need to be found and numbered for the mesh to use - the order is very important
         foreach (Triangle2 triangle in triangles)
         {
             for (int i = 0; i < vertices.Length; i++)

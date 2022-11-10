@@ -19,6 +19,7 @@ public class GetScreenshots : MonoBehaviour
         
     }
 
+    // Runs the python code
     public void RequestScreenshots(int amount)
     {
         int ExitCode;

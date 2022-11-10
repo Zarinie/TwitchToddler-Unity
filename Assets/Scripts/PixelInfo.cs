@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using System.Text.Json;
 using System;
 using Newtonsoft;
 using Newtonsoft.Json;
-//using com.unity.nuget.newtonsoft-json
 
-public class PixelInfo
+public struct PixelInfo 
 {
 
     public int x { get; set; }
@@ -18,5 +16,4 @@ public class PixelInfo
         x = xCoord;
         y = yCoord;
     }
-
 }
